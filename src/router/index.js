@@ -37,6 +37,33 @@ export default new Router({
           }
         },
         {
+          path: '/news',
+          component: () => import('../components/page/NewsTable.vue'),
+          meta: {
+            title: '新闻管理'
+          }
+        },
+        {
+          path: '/gc_manage',
+          component: () => import('../components/page/GC_Table.vue'),
+          meta: {
+            title: '分类管理'
+          }
+        },
+
+        {
+          path: '/add_item',
+          component: () => import('../components/page/GC_Form.vue'),
+          meta: {
+            title: '新增项目'
+          }
+        },
+        {
+          path: '/feedback',
+          component: () => import(/* webpackChunkName: "tabs" */ '../components/page/Feedback.vue'),
+          meta: { title: '用户反馈' }
+        },
+        {
           path: '/tabs',
           component: () => import(/* webpackChunkName: "tabs" */ '../components/page/Tabs.vue'),
           meta: { title: 'tab选项卡' }

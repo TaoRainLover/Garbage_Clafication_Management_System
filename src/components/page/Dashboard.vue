@@ -42,24 +42,26 @@
               </div>
             </el-card>
           </el-col>
+
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-2">
                 <i class="el-icon-lx-notice grid-con-icon"></i>
                 <div class="grid-cont-right">
                   <div class="grid-num">321</div>
-                  <div>系统消息</div>
+                  <div>用户反馈数量</div>
                 </div>
               </div>
             </el-card>
           </el-col>
+
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-3">
-                <i class="el-icon-lx-goods grid-con-icon"></i>
+                <i class="el-icon-lx-group grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">5000</div>
-                  <div>数量</div>
+                  <div class="grid-num">340</div>
+                  <div>用户注册总量</div>
                 </div>
               </div>
             </el-card>
@@ -98,6 +100,7 @@
           <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
         </el-card>
       </el-col>
+
       <el-col :span="12">
         <el-card shadow="hover">
           <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
@@ -115,32 +118,6 @@ export default {
   data() {
     return {
       name: localStorage.getItem('ms_username'),
-      todoList: [
-        {
-          title: '今天要修复100个bug',
-          status: false
-        },
-        {
-          title: '今天要修复100个bug',
-          status: false
-        },
-        {
-          title: '今天要写100行代码加几个bug吧',
-          status: false
-        },
-        {
-          title: '今天要修复100个bug',
-          status: false
-        },
-        {
-          title: '今天要修复100个bug',
-          status: true
-        },
-        {
-          title: '今天要写100行代码加几个bug吧',
-          status: true
-        }
-      ],
       data: [
         {
           name: '2018/09/04',
@@ -174,44 +151,48 @@ export default {
       options: {
         type: 'bar',
         title: {
-          text: '最近一周各品类销售图'
+          text: '上周各类别垃圾搜索数据总计图'
         },
         xRorate: 25,
         labels: ['周一', '周二', '周三', '周四', '周五'],
         datasets: [
           {
-            label: '家电',
+            label: '可回收物',
             data: [234, 278, 270, 190, 230]
           },
           {
-            label: '百货',
+            label: '有害垃圾',
             data: [164, 178, 190, 135, 160]
           },
           {
-            label: '食品',
+            label: '其他垃圾',
             data: [144, 198, 150, 235, 120]
+          },
+          {
+            label: '厨余垃圾',
+            data: [142, 298, 250, 215, 200]
           }
         ]
       },
       options2: {
         type: 'line',
         title: {
-          text: '最近几个月各品类销售趋势图'
+          text: '上周用户新增数据统计'
         },
-        labels: ['6月', '7月', '8月', '9月', '10月'],
+        labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         datasets: [
           {
-            label: '家电',
-            data: [234, 278, 270, 190, 230]
-          },
-          {
-            label: '百货',
-            data: [164, 178, 150, 135, 160]
-          },
-          {
-            label: '食品',
-            data: [74, 118, 200, 235, 90]
+            label: '数量',
+            data: [34, 28, 30, 40, 48, 33, 44]
           }
+          // {
+          //   label: '百货',
+          //   data: [164, 178, 150, 135, 160]
+          // },
+          // {
+          //   label: '食品',
+          //   data: [74, 118, 200, 235, 90]
+          // }
         ]
       }
     };

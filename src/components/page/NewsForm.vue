@@ -10,11 +10,11 @@
       <div class="form-box">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="标题">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.title"></el-input>
           </el-form-item>
 
           <el-form-item label="内容">
-            <el-input type="textarea" rows="5" v-model="form.desc"></el-input>
+            <el-input type="textarea" rows="5" v-model="form.content"></el-input>
           </el-form-item>
 
           <el-form-item label="来源">
@@ -30,7 +30,7 @@
           </el-form-item>
 
           <el-form-item label="类型">
-            <el-select v-model="form.region" placeholder="请选择">
+            <el-select v-model="form.type" placeholder="请选择">
               <el-option key="bbk" label="时政类" value="时政类"></el-option>
               <el-option key="xtc" label="环保类" value="环保类"></el-option>
               <el-option key="imoo" label="生活类" value="生活类"></el-option>
@@ -57,7 +57,7 @@
           </el-form-item> -->
 
           <el-form-item label="是否可见">
-            <el-switch v-model="form.is_visible"></el-switch>
+            <el-switch v-model="form.status"></el-switch>
           </el-form-item>
 
           <!-- <el-form-item label="多选框">
@@ -77,8 +77,8 @@
           </el-form-item> -->
 
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">表单提交</el-button>
-            <el-button>取消</el-button>
+            <el-button type="primary" @click="onSubmit">提 交</el-button>
+            <el-button>取 消</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import { addNews } from '../../api/news.js';
 export default {
   name: 'baseform',
   data() {
@@ -152,12 +153,14 @@ export default {
         cover_path: '',
         // type: ['步步高'],
         type: '环保类',
-        is_visible: true
+        status: true
       }
     };
   },
   methods: {
     onSubmit() {
+      console.log(this.form);
+      addNews(this.form);
       this.$message.success('提交成功！');
     }
   }

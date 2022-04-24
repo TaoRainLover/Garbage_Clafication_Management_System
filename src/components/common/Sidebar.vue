@@ -58,12 +58,17 @@ export default {
         {
           icon: 'el-icon-lx-newsfill',
           index: '3',
-          title: '新闻阅读材料管理',
+          title: '新闻文章管理',
           subs: [
+            {
+              index: 'news',
+              title: '文章管理'
+            },
             {
               index: 'add_news',
               title: '添加新闻'
-            },
+            }
+
             // {
             //   index: '3-2',
             //   title: '三级菜单',
@@ -78,10 +83,10 @@ export default {
             //     }
             //   ]
             // },
-            {
-              index: 'upload',
-              title: '文件上传'
-            }
+            // {
+            //   index: 'upload',
+            //   title: '文件上传'
+            // }
           ]
         },
         {
@@ -90,9 +95,13 @@ export default {
           title: '垃圾分类库管理',
           subs: [
             {
-              index: 'form',
-              title: '基本表单'
+              index: 'gc_manage',
+              title: '分类管理'
             },
+            {
+              index: 'add_item',
+              title: '新增项目'
+            }
             // {
             //     index: '3-2',
             //     title: '三级菜单',
@@ -107,63 +116,59 @@ export default {
             //         }
             //     ]
             // },
-            {
-              index: 'upload',
-              title: '文件上传'
-            }
           ]
         },
 
         {
           icon: 'el-icon-lx-comment',
-          index: 'tabs',
+          index: 'feedback',
           title: '用户反馈处理'
-        },
-        {
-          icon: 'el-icon-lx-emoji',
-          index: 'icon',
-          title: '自定义图标'
-        },
-        {
-          icon: 'el-icon-pie-chart',
-          index: 'charts',
-          title: 'schart图表'
-        },
-        {
-          icon: 'el-icon-rank',
-          index: '6',
-          title: '拖拽组件',
-          subs: [
-            {
-              index: 'drag',
-              title: '拖拽列表'
-            },
-            {
-              index: 'dialog',
-              title: '拖拽弹框'
-            }
-          ]
-        },
-        {
-          icon: 'el-icon-lx-global',
-          index: 'i18n',
-          title: '国际化功能'
-        },
-        {
-          icon: 'el-icon-lx-warn',
-          index: '7',
-          title: '错误处理',
-          subs: [
-            {
-              index: 'permission',
-              title: '权限测试'
-            },
-            {
-              index: '404',
-              title: '404页面'
-            }
-          ]
         }
+        // {
+        //   icon: 'el-icon-lx-emoji',
+        //   index: 'icon',
+        //   title: '自定义图标'
+        // },
+        // {
+        //   icon: 'el-icon-pie-chart',
+        //   index: 'charts',
+        //   title: 'schart图表'
+        // },
+        // {
+        //   icon: 'el-icon-rank',
+        //   index: '6',
+        //   title: '拖拽组件',
+        //   subs: [
+        //     {
+        //       index: 'drag',
+        //       title: '拖拽列表'
+        //     },
+        //     {
+        //       index: 'dialog',
+        //       title: '拖拽弹框'
+        //     }
+        //   ]
+        // },
+        // {
+        //   icon: 'el-icon-lx-global',
+        //   index: 'i18n',
+        //   title: '国际化功能'
+        // },
+        // {
+        //   icon: 'el-icon-lx-warn',
+        //   index: '7',
+        //   title: '错误处理',
+        //   subs: [
+        //     {
+        //       index: 'permission',
+        //       title: '权限测试'
+        //     },
+        //     {
+        //       index: '404',
+        //       title: '404页面'
+        //     }
+        //   ]
+        // }
         // {
         //     icon: 'el-icon-lx-redpacket_fill',
         //     index: '/donate',
@@ -195,6 +200,7 @@ export default {
   top: 70px;
   bottom: 0;
   overflow-y: scroll;
+  /* background: #4bae32; */
 }
 .sidebar::-webkit-scrollbar {
   width: 0;

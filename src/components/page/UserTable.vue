@@ -7,7 +7,12 @@
     </div>
     <div class="container">
       <div class="handle-box">
-        <el-input v-model="query.name" placeholder="请输入用户名或者openid" class="handle-input mr10"></el-input>
+        <el-select v-model="query.type" placeholder="搜索方式" class="handle-select mr10">
+          <el-option key="1" label="OPENID" value="openid"></el-option>
+          <el-option key="2" label="用户昵称" value="nickname"></el-option>
+        </el-select>
+
+        <el-input v-model="query.info" placeholder="请输入用户名或者openid" class="handle-input mr10"></el-input>
         <el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
       </div>
       <el-table
@@ -21,7 +26,7 @@
         <el-table-column type="selection" width="55" align="center"></el-table-column>
         <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
         <el-table-column prop="openid" label="OPENID" align="center"></el-table-column>
-        <el-table-column prop="nickname" label="用户名"></el-table-column>
+        <el-table-column prop="nickName" label="用户昵称"></el-table-column>
 
         <el-table-column label="头像(查看大图)" align="center">
           <template slot-scope="scope">
@@ -35,13 +40,13 @@
 
         <el-table-column label="状态" align="center">
           <template slot-scope="scope">
-            <el-tag :type="scope.row.status === '正常' ? 'success' : scope.row.status === '失败' ? 'danger' : ''">{{
-              scope.row.status
+            <el-tag :type="scope.row.status === 0 ? 'success' : scope.row.status === 1 ? 'danger' : ''">{{
+              scope.row.status === 0 ? '正常' : scope.row.status === 1 ? '异常' : ''
             }}</el-tag>
           </template>
         </el-table-column>
 
-        <el-table-column prop="regTime" label="注册时间"></el-table-column>
+        <el-table-column prop="reg_time" label="注册时间"></el-table-column>
 
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
@@ -60,6 +65,8 @@
           :page-size="query.pageSize"
           :total="pageTotal"
           @current-change="handlePageChange"
+          @pre-click="handlePageChange"
+          @next-click="handlePageChange"
         ></el-pagination>
       </div>
     </div>
@@ -84,16 +91,19 @@
 
 <script>
 import { fetchData } from '../../api/index';
+import { getUserList, query } from '../../api/user.js';
+
 export default {
   name: 'basetable',
   data() {
     return {
       query: {
+        type: 'openid',
+        info: '',
         name: '',
         pageIndex: 1,
         pageSize: 10
       },
-      tableData: [],
       userData: [
         {
           id: 1,
@@ -127,21 +137,30 @@ export default {
   },
   created() {
     this.getData();
-    console.log(this.tableData);
+    // console.log(this.tableData);
   },
   methods: {
     // 获取 easy-mock 的模拟数据
-    getData() {
-      fetchData(this.query).then((res) => {
-        console.log(res);
-        this.tableData = res.list;
-        this.pageTotal = res.pageTotal || 50;
-      });
+    async getData() {
+      // fetchData(this.query).then((res) => {
+      //   console.log(res);
+      //   this.tableData = res.list;
+      //   this.pageTotal = res.pageTotal || 50;
+      // });
+      const userList = await getUserList(this.query);
+      console.log(userList);
+      this.userData = userList.data;
+
+      // this.pageTotal = 8;
     },
     // 触发搜索按钮
     handleSearch() {
       this.$set(this.query, 'pageIndex', 1);
-      this.getData();
+      // this.getData();
+      query(this.query).then((res) => {
+        // console.log(res);
+        this.userData = res.list;
+      });
     },
     // 删除操作
     handleDelete(index, row) {
@@ -183,6 +202,8 @@ export default {
     },
     // 分页导航
     handlePageChange(val) {
+      console.log(val);
+
       this.$set(this.query, 'pageIndex', val);
       this.getData();
     }
