@@ -111,11 +111,7 @@ export default {
       unread: [],
       read: [],
       recycle: [],
-      form: {
-        title: '该系统将于今晚凌晨2点到5点进行升级维护',
-        content: '这是内容这是内容这是内容这是内容这是内容这是内容这是内容',
-        type: '系统问题'
-      }
+      form: {}
     };
   },
   methods: {

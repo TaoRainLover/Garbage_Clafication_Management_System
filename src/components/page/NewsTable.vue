@@ -72,11 +72,14 @@
       <div class="pagination">
         <el-pagination
           background
-          layout="total, prev, pager, next"
+          layout="total,sizes, prev, pager, next, jumper"
           :current-page="query.pageIndex"
           :page-size="query.pageSize"
+          :page-sizes="[5, 10, 20]"
           :total="pageTotal"
           @current-change="handlePageChange"
+          @pre-click="handlePageChange"
+          @next-click="handlePageChange"
         ></el-pagination>
       </div>
     </div>
@@ -162,7 +165,7 @@ export default {
         address: '',
         name: '',
         pageIndex: 1,
-        pageSize: 10
+        pageSize: 6
       },
       tableData: [],
       newsData: [
@@ -197,7 +200,7 @@ export default {
       multipleSelection: [],
       delList: [],
       editVisible: false,
-      pageTotal: 0,
+      pageTotal: 5,
       form: {},
       idx: -1,
       id: -1

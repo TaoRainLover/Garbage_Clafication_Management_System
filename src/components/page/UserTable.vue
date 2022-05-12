@@ -60,10 +60,11 @@
       <div class="pagination">
         <el-pagination
           background
-          layout="total, prev, pager, next"
-          :current-page="query.pageIndex"
-          :page-size="query.pageSize"
-          :total="pageTotal"
+          layout="total,sizes, prev, pager, next, jumper"
+          :current-page="2"
+          :page-size="10"
+          :page-sizes="[5, 10, 20]"
+          :total="100"
           @current-change="handlePageChange"
           @pre-click="handlePageChange"
           @next-click="handlePageChange"
@@ -102,7 +103,7 @@ export default {
         info: '',
         name: '',
         pageIndex: 1,
-        pageSize: 10
+        pageSize: 6
       },
       userData: [
         {
@@ -155,6 +156,7 @@ export default {
     },
     // 触发搜索按钮
     handleSearch() {
+      if (this.query.name == '') return this.$message.error('输入不能为空！');
       this.$set(this.query, 'pageIndex', 1);
       // this.getData();
       query(this.query).then((res) => {

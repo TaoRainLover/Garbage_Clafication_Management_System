@@ -59,11 +59,14 @@
       <div class="pagination">
         <el-pagination
           background
-          layout="total, prev, pager, next"
+          layout="total, sizes, prev, pager, next, jumper"
           :current-page="query.pageIndex"
           :page-size="query.pageSize"
+          :page-sizes="[6, 10, 20]"
           :total="pageTotal"
           @current-change="handlePageChange"
+          @pre-click="handlePageChange"
+          @next-click="handlePageChange"
         ></el-pagination>
       </div>
     </div>
@@ -143,42 +146,11 @@ export default {
         pageSize: 10
       },
       tableData: [],
-      gc_data: [
-        // {
-        //   id: 1,
-        //   name: '橘子皮',
-        //   type: '厨余垃圾',
-        //   status: true,
-        //   create_date: '2022-4-14',
-        //   date1: '2022-4-14',
-        //   date2: '14:12:35'
-        // },
-        // {
-        //   id: 2,
-        //   name: '手机',
-        //   type: '可回收物',
-        //   status: true,
-        //   create_date: '2022-4-14'
-        // },
-        // {
-        //   id: 3,
-        //   name: '橘子皮',
-        //   type: '厨余垃圾',
-        //   status: false,
-        //   create_date: '2022-4-14'
-        // },
-        // {
-        //   id: 4,
-        //   name: '橘子皮',
-        //   type: '厨余垃圾',
-        //   status: false,
-        //   create_date: '2022-4-14'
-        // }
-      ],
+      gc_data: [],
       multipleSelection: [],
       delList: [],
       editVisible: false,
-      pageTotal: 0,
+      pageTotal: 250,
       form: {},
       idx: -1,
       id: -1
@@ -186,7 +158,7 @@ export default {
   },
   created() {
     // this.getData();
-    this.get_list_type({ type: 1, pageIndex: 1, pageSize: 20 });
+    this.get_list_type({ type: 1, pageIndex: 1, pageSize: 10 });
   },
   methods: {
     // 获取 easy-mock 的模拟数据

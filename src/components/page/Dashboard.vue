@@ -34,10 +34,10 @@
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-1">
-                <i class="el-icon-lx-people grid-con-icon"></i>
+                <i class="el-icon-lx-cascades grid-con-icon"></i>
                 <div class="grid-cont-right">
                   <div class="grid-num">1234</div>
-                  <div>用户访问量</div>
+                  <div>垃圾分类数据量</div>
                 </div>
               </div>
             </el-card>
@@ -46,10 +46,10 @@
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-2">
-                <i class="el-icon-lx-notice grid-con-icon"></i>
+                <i class="el-icon-lx-people grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">321</div>
-                  <div>用户反馈数量</div>
+                  <div class="grid-num">54</div>
+                  <div>用户注册量</div>
                 </div>
               </div>
             </el-card>
@@ -58,10 +58,10 @@
           <el-col :span="8">
             <el-card shadow="hover" :body-style="{ padding: '0px' }">
               <div class="grid-content grid-con-3">
-                <i class="el-icon-lx-group grid-con-icon"></i>
+                <i class="el-icon-lx-comment grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">340</div>
-                  <div>用户注册总量</div>
+                  <div class="grid-num">68</div>
+                  <div>用户反馈数量</div>
                 </div>
               </div>
             </el-card>
@@ -113,6 +113,7 @@
 <script>
 import Schart from 'vue-schart';
 import bus from '../common/bus';
+
 export default {
   name: 'dashboard',
   data() {
@@ -287,15 +288,15 @@ export default {
 }
 
 .grid-con-2 .grid-num {
-  color: rgb(45, 140, 240);
+  color: rgb(100, 213, 114);
 }
 
 .grid-con-3 .grid-con-icon {
-  background: rgb(242, 94, 67);
+  background: #f5a623;
 }
 
 .grid-con-3 .grid-num {
-  color: rgb(242, 94, 67);
+  color: #f5a623;
 }
 
 .user-info {
