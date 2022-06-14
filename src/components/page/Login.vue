@@ -2,9 +2,9 @@
   <div class="login-wrap">
     <div class="login-box">
       <div class="left">
-        <div class="bg"></div>
         <div class="content">
           <p class="title">垃圾分类后台管理系统</p>
+          <img src="../../assets/img/img2.png" alt="" class="img" />
           <p class="des">
             集图像、语音、文本输入查询一体的的垃圾分类帮手，旨在帮助人们解决在垃圾分类中的痛点问题，帮助垃圾分类工作顺利进行。
           </p>
@@ -28,6 +28,7 @@
             <el-button type="primary" @click="submitForm()">登 录</el-button>
           </div>
         </el-form>
+        <p class="version">Version: 1.1.6</p>
       </div>
     </div>
   </div>
@@ -82,40 +83,34 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(../../assets/img/login-bg4.png);
-  /* background: skyblue; */
+  background-image: url(../../assets/img/bg2.png);
   background-size: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .login-wrap .login-box {
-  width: 80%;
+  width: 60%;
   height: 60%;
-  box-shadow: 0px 0px 15px 4px rgba(85, 85, 85, 0.26);
-  border-radius: 8px;
+  box-shadow: 0px 0px 10px 2px #e3e9df;
+  border-radius: 12px;
   background: white;
   display: flex;
 }
 .login-box .left {
   width: 55%;
   height: 100%;
-  position: relative;
-  /* overflow: auto; */
+  background: #4bae32;
+  /* position: relative; */
+  border-radius: 12px 0px 0 12px;
+  /* border-radius: 12px; */
 }
-.left .bg {
-  width: 100%;
-  height: 100%;
-  background-image: url(../../assets/img/form-bg.png);
-  background-size: 130%;
-  border-radius: 8px 0 0 8px;
-  filter: blur(2px);
-}
+
 .left .content {
-  position: absolute;
-  top: 0;
   width: 100%;
   height: 100%;
+
+  color: white;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -123,18 +118,23 @@ export default {
   align-items: center;
   padding: 40px 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .left .title {
   font-size: 28px;
-  color: #242f42;
   /* margin-top: 20px; */
   font-weight: bolder;
   margin-bottom: 20px;
 }
+.left .content .img {
+  height: 50%;
+  width: 50%;
+  /* background: skyblue; */
+}
 .left .des {
   width: 70%;
   font-size: 14px;
-  color: #324157;
+  font-weight: bold;
 }
 .ms-login {
   width: 45%;
@@ -144,7 +144,7 @@ export default {
   align-content: center;
   background: white;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 .ms-title {
   width: 100%;
@@ -164,10 +164,18 @@ export default {
 .login-btn button {
   width: 100%;
   height: 36px;
+  background: #14a7ff;
+  outline: none;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 .login-tips {
   font-size: 12px;
   line-height: 30px;
+}
+.version {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 24px;
 }
 </style>

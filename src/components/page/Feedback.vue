@@ -29,7 +29,7 @@
           </div>
         </el-tab-pane>
 
-        <el-tab-pane :label="`已读消息(${read.length})`" name="second">
+        <el-tab-pane :label="`已读待处理(${read.length})`" name="second">
           <template v-if="message === 'second'">
             <el-table :data="read" :show-header="false" style="width: 100%">
               <el-table-column>
@@ -40,17 +40,17 @@
               <el-table-column prop="date" width="150"></el-table-column>
               <el-table-column width="120">
                 <template slot-scope="scope">
-                  <el-button type="danger" @click="handleDel(scope.$index)">删除</el-button>
+                  <el-button type="danger" @click="handleDel(scope.$index)">已处理</el-button>
                 </template>
               </el-table-column>
             </el-table>
             <div class="handle-row">
-              <el-button type="danger">删除全部</el-button>
+              <el-button type="danger">处理全部</el-button>
             </div>
           </template>
         </el-tab-pane>
 
-        <el-tab-pane :label="`回收站(${recycle.length})`" name="third">
+        <el-tab-pane :label="`已处理(${recycle.length})`" name="third">
           <template v-if="message === 'third'">
             <el-table :data="recycle" :show-header="false" style="width: 100%">
               <el-table-column>
@@ -61,12 +61,12 @@
               <el-table-column prop="date" width="150"></el-table-column>
               <el-table-column width="120">
                 <template slot-scope="scope">
-                  <el-button @click="handleRestore(scope.$index)">还原</el-button>
+                  <el-button @click="handleRestore(scope.$index)">恢复</el-button>
                 </template>
               </el-table-column>
             </el-table>
             <div class="handle-row">
-              <el-button type="danger">清空回收站</el-button>
+              <el-button type="danger">清空所有</el-button>
             </div>
           </template>
         </el-tab-pane>
@@ -78,10 +78,11 @@
       <el-form ref="form" :model="form" label-width="70px">
         <el-form-item label="类型:">
           <el-radio-group v-model="form.type">
+            <!-- <el-radio :label="form.type">其他</el-radio> -->
             <el-radio label="系统问题"></el-radio>
             <el-radio label="意见反馈"></el-radio>
             <el-radio label="账号问题"></el-radio>
-            <el-radio label="其他"></el-radio>
+            <el-radio :label="form.type">其他</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="标题:">

@@ -61,10 +61,10 @@
         <el-pagination
           background
           layout="total,sizes, prev, pager, next, jumper"
-          :current-page="2"
-          :page-size="10"
-          :page-sizes="[5, 10, 20]"
-          :total="100"
+          :current-page="1"
+          :page-size="8"
+          :page-sizes="[5, 8, 20]"
+          :total="20"
           @current-change="handlePageChange"
           @pre-click="handlePageChange"
           @next-click="handlePageChange"
@@ -149,14 +149,12 @@ export default {
       //   this.pageTotal = res.pageTotal || 50;
       // });
       const userList = await getUserList(this.query);
-      console.log(userList);
+      // console.log(userList);
       this.userData = userList.data;
-
-      // this.pageTotal = 8;
     },
     // 触发搜索按钮
     handleSearch() {
-      if (this.query.name == '') return this.$message.error('输入不能为空！');
+      if (this.query.info == '') return this.$message.error('输入不能为空！');
       this.$set(this.query, 'pageIndex', 1);
       // this.getData();
       query(this.query).then((res) => {

@@ -2,21 +2,16 @@
   <div>
     <el-row :gutter="20">
       <el-col :span="8">
-        <el-card shadow="hover" class="mgb20" style="height: 252px">
+        <el-card shadow="hover" class="mgb20" style="height: 240px">
           <div class="user-info">
-            <img src="../../assets/img/avatar.jpg" class="user-avator" alt />
+            <img src="../../assets/img/img2.png" class="user-avator" alt />
             <div class="user-info-cont">
               <div class="user-info-name">{{ name }}</div>
               <div>{{ role }}</div>
             </div>
           </div>
           <div class="user-info-list">
-            上次登录时间：
-            <span>2022-04-20</span>
-          </div>
-          <div class="user-info-list">
-            上次登录地点：
-            <span>ChongQing</span>
+            当前系统时间：<span>{{ time }}</span>
           </div>
         </el-card>
 
@@ -36,7 +31,7 @@
               <div class="grid-content grid-con-1">
                 <i class="el-icon-lx-cascades grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">1234</div>
+                  <div class="grid-num">4224</div>
                   <div>垃圾分类数据量</div>
                 </div>
               </div>
@@ -48,7 +43,7 @@
               <div class="grid-content grid-con-2">
                 <i class="el-icon-lx-people grid-con-icon"></i>
                 <div class="grid-cont-right">
-                  <div class="grid-num">54</div>
+                  <div class="grid-num">108</div>
                   <div>用户注册量</div>
                 </div>
               </div>
@@ -184,7 +179,7 @@ export default {
         datasets: [
           {
             label: '数量',
-            data: [34, 28, 30, 40, 48, 33, 44]
+            data: [11, 16, 8, 6, 14, 22, 18]
           }
           // {
           //   label: '百货',
@@ -204,6 +199,16 @@ export default {
   computed: {
     role() {
       return this.name === 'admin' ? '超级管理员' : '普通用户';
+    },
+    time() {
+      var time = new Date();
+      var year = time.getFullYear();
+      var month = time.getMonth();
+      var date = time.getDate();
+      var day = time.getDay();
+      var hour = time.getHours();
+      var minu = time.getMinutes();
+      return year + '/' + month + '/' + date + ' ' + hour + ':' + minu + ' 星期' + day;
     }
   },
   // created() {
@@ -332,7 +337,7 @@ export default {
 }
 
 .user-info-list span {
-  margin-left: 70px;
+  margin-left: 35px;
 }
 
 .mgb20 {

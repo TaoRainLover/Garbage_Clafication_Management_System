@@ -35,7 +35,7 @@
 
         <el-table-column label="类别" align="center">
           <template slot-scope="scope">
-            <el-tag>
+            <el-tag :type="scope.row.type == 1 ? 'success' : scope.row.type == 2 ? 'danger' : scope.row.type == 3 ? 'info' : 'warning'">
               {{ scope.row.type == 1 ? '可回收物' : scope.row.type == 2 ? '有害垃圾' : scope.row.type == 3 ? '厨余垃圾' : '其他垃圾' }}
             </el-tag>
           </template>
@@ -163,11 +163,11 @@ export default {
   methods: {
     // 获取 easy-mock 的模拟数据
     getData() {
-      fetchData(this.query).then((res) => {
-        console.log(res);
-        this.tableData = res.list;
-        this.pageTotal = res.pageTotal || 50;
-      });
+      // fetchData(this.query).then((res) => {
+      //   console.log(res);
+      //   this.tableData = res.list;
+      //   this.pageTotal = res.pageTotal || 50;
+      // });
     },
 
     get_list_type(params) {
@@ -239,7 +239,9 @@ export default {
     // 分页导航
     handlePageChange(val) {
       this.$set(this.query, 'pageIndex', val);
-      this.getData();
+      console.log(this.query);
+
+      this.get_list_type(this.query);
     }
   }
 };
